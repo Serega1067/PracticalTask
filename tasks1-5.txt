@@ -1,0 +1,59 @@
+Задание
+1. Используя команду cat в терминале операционной системы Linux, создать
+два файла Домашние животные (заполнив файл собаками, кошками,
+хомяками) и Вьючные животными заполнив файл Лошадьми, верблюдами и
+ослы), а затем объединить их. Просмотреть содержимое созданного файла.
+Переименовать файл, дав ему новое имя (Друзья человека).
+2. Создать директорию, переместить файл туда.
+
+serega@DESKTOP-BE63PID:~$ ls
+learning_prog  taskJava.class  taskJava.java  test1.py  workJava
+serega@DESKTOP-BE63PID:~$ pwd
+/home/serega
+serega@DESKTOP-BE63PID:~$ cap > 'home_animals'
+-bash: cap: command not found
+serega@DESKTOP-BE63PID:~$ cat > 'home_animals'
+cats
+dogs
+hamsters
+^C
+serega@DESKTOP-BE63PID:~$ cat > 'pack_animals'
+horses
+camels
+donkeys
+^C
+serega@DESKTOP-BE63PID:~$ cat home_animals pack_animals > 'animals'
+serega@DESKTOP-BE63PID:~$ cat animals
+cats
+dogs
+hamsters
+horses
+camels
+donkeys
+serega@DESKTOP-BE63PID:~$ mv animals 'human_friends'
+serega@DESKTOP-BE63PID:~$ mkdir taskDir
+serega@DESKTOP-BE63PID:~$ mv human_friends taskDir/
+serega@DESKTOP-BE63PID:~$ ls
+home_animals   pack_animals  taskJava.class  test1.py
+learning_prog  taskDir       taskJava.java   workJava
+serega@DESKTOP-BE63PID:~$
+serega@DESKTOP-BE63PID:~$ ls taskDir
+human_friends
+serega@DESKTOP-BE63PID:~$
+
+3. Подключить дополнительный репозиторий MySQL. Установить любой пакет
+из этого репозитория.
+4. Установить и удалить deb-пакет с помощью dpkg.
+5. Выложить историю команд в терминале ubuntu.
+
+serega@DESKTOP-BE63PID:~$ wget https://dev.mysql.com/get/mysql-apt-config_0.
+8.24-1_all.deb
+serega@DESKTOP-BE63PID:~$ sudo dpkg -i mysql-apt-config_0.8.24-1_all.deb
+serega@DESKTOP-BE63PID:~$ sudo apt-get update
+sudo apt-get install mysql-server
+systemctl status mysql
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j_8.0.32-1ubuntu22.04_all.deb
+sudo dpkg -i ~/Desctop/mysql-connector-j_8.0.32-1ubuntu22.04_all.deb
+sudo dpkg -r mysql-connector-j
+sudo apt-get autoremove
+
