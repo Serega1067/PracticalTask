@@ -15,10 +15,13 @@ namespace AccountingSystemForTheNursery.Services.Impl
                 connection.Open();
                 // Прописываем в команду SQL-запрос на добавление данных
                 SQLiteCommand command = new SQLiteCommand(connection);
-                command.CommandText = "INSERT INTO animals(AnimalName, AnimalClass, ListOfAnimalCommands) VALUES(@AnimalName, @AnimalClass, @ListOfAnimalCommands)";
+                command.CommandText = "INSERT INTO animals(" +
+                    "AnimalName, AnimalClass, ListOfAnimalCommands) " +
+                    "VALUES(@AnimalName, @AnimalClass, @ListOfAnimalCommands)";
                 command.Parameters.AddWithValue("@AnimalName", item.AnimalName);
                 command.Parameters.AddWithValue("@AnimalClass", item.AnimalClass);
-                command.Parameters.AddWithValue("@ListOfAnimalCommands", item.ListOfAnimalCommands);
+                command.Parameters.AddWithValue("@ListOfAnimalCommands", 
+                                                 item.ListOfAnimalCommands);
                 // Подготовка команды к выполнению
                 command.Prepare();
                 // Выполнение команды
@@ -142,14 +145,15 @@ namespace AccountingSystemForTheNursery.Services.Impl
                 // Прописываем в команду SQL-запрос на добавление данных
                 SQLiteCommand command = new SQLiteCommand(connection);
                 command.CommandText = "UPDATE animals SET " +
-                    "AnimalName = @AnimalName, " +
-                    "AnimalClass = @AnimalClass, " +
-                    "ListOfAnimalCommands = @ListOfAnimalCommands, " +
-                    "WHERE AnimalId = @AnimalId";
+                                      "AnimalName = @AnimalName, " +
+                                      "AnimalClass = @AnimalClass, " +
+                                      "ListOfAnimalCommands = @ListOfAnimalCommands " +
+                                      "WHERE AnimalId = @AnimalId";
                 command.Parameters.AddWithValue("@AnimalId", item.AnimalId);
                 command.Parameters.AddWithValue("@AnimalName", item.AnimalName);
                 command.Parameters.AddWithValue("@AnimalClass", item.AnimalClass);
-                command.Parameters.AddWithValue("@ListOfAnimalCommands", item.ListOfAnimalCommands);
+                command.Parameters.AddWithValue("@ListOfAnimalCommands", 
+                                                 item.ListOfAnimalCommands);
                 // Подготовка команды к выполнению
                 command.Prepare();
                 // Выполнение команды

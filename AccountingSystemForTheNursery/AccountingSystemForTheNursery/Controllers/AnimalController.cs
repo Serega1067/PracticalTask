@@ -20,7 +20,8 @@ namespace AccountingSystemForTheNursery.Controllers
         }
 
         [HttpPost("create")]
-        public ActionResult<int> Create([FromBody] CreateAnimalRequest createAnimalRequest)
+        public ActionResult<int> Create([FromBody] 
+                                         CreateAnimalRequest createAnimalRequest)
         {
             Animal animal = new Animal();
             animal.AnimalName = createAnimalRequest.AnimalName;
@@ -31,7 +32,8 @@ namespace AccountingSystemForTheNursery.Controllers
         }
 
         [HttpPut("update")]
-        public ActionResult<int> Update([FromBody] UpdateAnimalRequest updateAnimalRequest)
+        public IActionResult Update([FromBody] 
+                                     UpdateAnimalRequest updateAnimalRequest)
         {
             Animal animal = new Animal();
             animal.AnimalId = updateAnimalRequest.AnimalId;
