@@ -1,4 +1,6 @@
-﻿namespace AccountingSystemForTheNursery.Services
+﻿using System.Security.Cryptography;
+
+namespace AccountingSystemForTheNursery.Services
 {
     public interface IRepository<T, TId> where T : class
     {

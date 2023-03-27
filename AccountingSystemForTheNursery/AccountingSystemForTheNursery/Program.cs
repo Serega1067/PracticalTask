@@ -21,7 +21,10 @@ namespace AccountingSystemForTheNursery
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(config =>
+            {
+                config.EnableAnnotations();
+            });
 
             var app = builder.Build();
 
@@ -56,16 +59,15 @@ namespace AccountingSystemForTheNursery
         {
             SQLiteCommand command = new SQLiteCommand(connection);
 
-            /*
-            command.CommandText = "DROP TABLE IF EXISTS Animals";
+            command.CommandText = "DROP TABLE IF EXISTS animals";
             command.ExecuteNonQuery();
-            */
 
-            command.CommandText = @"CREATE TABLE Animals(
-                                    AnimalId INTEGER PRIMARY KEY,
-                                    AnimalName TEXT,
-                                    AnimalClass TEXT,
-                                    ListOfAnimalCommands TEXT)";
+            command.CommandText = @"CREATE TABLE animals(
+                                    Id INTEGER PRIMARY KEY,
+                                    Name TEXT,
+                                    Type TEXT,
+                                    Commands TEXT, 
+                                    Birthday INTEGER)";
             command.ExecuteNonQuery();
             connection.Close();
         }

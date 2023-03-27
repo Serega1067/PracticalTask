@@ -1,4 +1,4 @@
-﻿using AccountingSystemForTheNursery.Models;
+﻿using AccountingSystemForTheNursery.Models.Animals;
 
 namespace AccountingSystemForTheNursery.Services
 {

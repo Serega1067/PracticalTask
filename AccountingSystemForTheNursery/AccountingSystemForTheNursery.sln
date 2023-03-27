@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingSystemForTheNursery", "AccountingSystemForTheNursery\AccountingSystemForTheNursery.csproj", "{BF21A7BF-926A-4367-A48C-2859A9AE1EE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountingSystemForTheNursery", "AccountingSystemForTheNursery\AccountingSystemForTheNursery.csproj", "{BF21A7BF-926A-4367-A48C-2859A9AE1EE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingSystemForTheNurseryDesctop", "AccountingSystemForTheNurseryDesctop\AccountingSystemForTheNurseryDesctop.csproj", "{E0B9DE82-553C-45A1-A914-467EF1DE5C0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BF21A7BF-926A-4367-A48C-2859A9AE1EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF21A7BF-926A-4367-A48C-2859A9AE1EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF21A7BF-926A-4367-A48C-2859A9AE1EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0B9DE82-553C-45A1-A914-467EF1DE5C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0B9DE82-553C-45A1-A914-467EF1DE5C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0B9DE82-553C-45A1-A914-467EF1DE5C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0B9DE82-553C-45A1-A914-467EF1DE5C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

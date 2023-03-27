@@ -1,5 +1,6 @@
-﻿using AccountingSystemForTheNursery.Models;
+﻿using AccountingSystemForTheNursery.Models.Animals;
 using System.Data.SQLite;
+using AccountingSystemForTheNursery.Models;
 
 namespace AccountingSystemForTheNursery.Services.Impl
 {
@@ -16,12 +17,13 @@ namespace AccountingSystemForTheNursery.Services.Impl
                 // Прописываем в команду SQL-запрос на добавление данных
                 SQLiteCommand command = new SQLiteCommand(connection);
                 command.CommandText = "INSERT INTO animals(" +
-                    "AnimalName, AnimalClass, ListOfAnimalCommands) " +
-                    "VALUES(@AnimalName, @AnimalClass, @ListOfAnimalCommands)";
-                command.Parameters.AddWithValue("@AnimalName", item.AnimalName);
-                command.Parameters.AddWithValue("@AnimalClass", item.AnimalClass);
-                command.Parameters.AddWithValue("@ListOfAnimalCommands", 
-                                                 item.ListOfAnimalCommands);
+                    "Name, Type, Commands, Birthday) " +
+                    "VALUES(@Name, @Type, @Commands, @Birthday)";
+                command.Parameters.AddWithValue("@Name", item.Name);
+                command.Parameters.AddWithValue("@Type", item.Type);
+                command.Parameters.AddWithValue("@Commands", 
+                                                 string.Join(", ", item.Commands));
+                command.Parameters.AddWithValue("@Birthday", item.Birthday.Ticks);
                 // Подготовка команды к выполнению
                 command.Prepare();
                 // Выполнение команды
@@ -46,8 +48,8 @@ namespace AccountingSystemForTheNursery.Services.Impl
                 // Прописываем в команду SQL-запрос на удаление данных
                 SQLiteCommand command = new SQLiteCommand(connection);
                 command.CommandText = "DELETE FROM animals " +
-                                      "WHERE AnimalId = @AnimalId";
-                command.Parameters.AddWithValue("@AnimalId", id);
+                                      "WHERE Id = @Id";
+                command.Parameters.AddWithValue("@Id", id);
                 // Подготовка команды к выполнению
                 command.Prepare();
                 // Выполнение команды
@@ -65,27 +67,27 @@ namespace AccountingSystemForTheNursery.Services.Impl
 
         public IList<Animal> GetAll()
         {
-            SQLiteConnection connection = new SQLiteConnection(connectionString);
             List<Animal> list = new List<Animal>();
+            SQLiteConnection connection = new SQLiteConnection(connectionString);
             try
             {
                 connection.Open();
                 // Прописываем в команду SQL-запрос на получение данных
                 SQLiteCommand command = new SQLiteCommand(connection);
-                command.CommandText = "SELECT * FROM animals ";
+                command.CommandText = "SELECT * FROM animals";
                 // Подготовка команды к выполнению
                 command.Prepare();
                 // Выполнение команды
                 SQLiteDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Animal animal = new Animal
-                    {
-                        AnimalId = reader.GetInt32(0),
-                        AnimalName = reader.GetString(1),
-                        AnimalClass = reader.GetString(2),
-                        ListOfAnimalCommands = reader.GetString(3)
-                    };
+                    // Animal animal = new Animal
+                    Animal animal = CreateAnimal.create(reader.GetString(2));
+                    animal.Id = reader.GetInt32(0);
+                    animal.Name = reader.GetString(1);
+                    // animal = CreateAnimal.create(reader.GetString(2)),
+                    animal.Commands = reader.GetString(3).Split(", ").ToList();
+                    animal.Birthday = new DateTime(reader.GetInt64(4));
 
                     list.Add(animal);
                 }
@@ -99,6 +101,7 @@ namespace AccountingSystemForTheNursery.Services.Impl
 
         public Animal GetById(int id)
         {
+            List<Animal> list = new List<Animal>();
             SQLiteConnection connection = new SQLiteConnection(connectionString);
             try
             {
@@ -107,8 +110,8 @@ namespace AccountingSystemForTheNursery.Services.Impl
                 // по конкретному клиенту
                 SQLiteCommand command = new SQLiteCommand(connection);
                 command.CommandText = "SELECT * FROM animals " +
-                                      "WHERE AnimalId = @AnimalId";
-                command.Parameters.AddWithValue("@AnimalId", id);
+                                      "WHERE Id = @Id";
+                command.Parameters.AddWithValue("@Id", id);
                 // Подготовка команды к выполнению
                 command.Prepare();
                 // Выполнение команды
@@ -116,13 +119,13 @@ namespace AccountingSystemForTheNursery.Services.Impl
                 if (reader.Read()) // Если удалось что-то прочитать
                 {
                     // возвращаем прочитанное
-                    return new Animal
-                    {
-                        AnimalId = reader.GetInt32(0),
-                        AnimalName = reader.GetString(1),
-                        AnimalClass = reader.GetString(2),
-                        ListOfAnimalCommands = reader.GetString(3)
-                    };
+                    // return new Animal
+                    Animal animal = CreateAnimal.create(reader.GetString(2));
+                    animal.Id = reader.GetInt32(0);
+                    animal.Name = reader.GetString(1);
+                    animal.Commands = reader.GetString(3).Split(", ").ToList();
+                    animal.Birthday = new DateTime(reader.GetInt64(4));
+                    return animal;
                 }
                 else
                 {
@@ -145,15 +148,17 @@ namespace AccountingSystemForTheNursery.Services.Impl
                 // Прописываем в команду SQL-запрос на добавление данных
                 SQLiteCommand command = new SQLiteCommand(connection);
                 command.CommandText = "UPDATE animals SET " +
-                                      "AnimalName = @AnimalName, " +
-                                      "AnimalClass = @AnimalClass, " +
-                                      "ListOfAnimalCommands = @ListOfAnimalCommands " +
-                                      "WHERE AnimalId = @AnimalId";
-                command.Parameters.AddWithValue("@AnimalId", item.AnimalId);
-                command.Parameters.AddWithValue("@AnimalName", item.AnimalName);
-                command.Parameters.AddWithValue("@AnimalClass", item.AnimalClass);
-                command.Parameters.AddWithValue("@ListOfAnimalCommands", 
-                                                 item.ListOfAnimalCommands);
+                                      "Name = @Name, " +
+                                      "Type = @Type, " +
+                                      "Commands = @Commands, " +
+                                      "Birthday = @Birthday " +
+                                      "WHERE Id = @Id";
+                command.Parameters.AddWithValue("@Id", item.Id);
+                command.Parameters.AddWithValue("@Name", item.Name);
+                command.Parameters.AddWithValue("@Type", item.Type);
+                command.Parameters.AddWithValue("@Commands", 
+                                                 string.Join(", ", item.Commands));
+                command.Parameters.AddWithValue("@Birthday", item.Birthday.Ticks);
                 // Подготовка команды к выполнению
                 command.Prepare();
                 // Выполнение команды
