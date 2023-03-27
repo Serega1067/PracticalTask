@@ -22,17 +22,5 @@ namespace AccountingSystemForTheNursery.Models.Animals
             Name = string.Empty;
             Commands = new List<string>();
         }
-
-        public void Voise()
-        {
-        }
-
-        public void Sleep()
-        {
-        }
-
-        public void Eat()
-        {
-        }
     }
 }

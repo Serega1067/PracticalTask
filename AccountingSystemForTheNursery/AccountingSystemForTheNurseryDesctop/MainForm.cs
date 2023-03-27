@@ -21,7 +21,6 @@ namespace AccountingSystemForTheNurseryDesctop
 
         private void buttonLoadAnimal_Click(object sender, EventArgs e)
         {
-            /*
             AnimalServicesClient animalServicesClient = new AnimalServicesClient(
                 "http://localhost:5294/", new System.Net.Http.HttpClient());
 
@@ -73,7 +72,6 @@ namespace AccountingSystemForTheNurseryDesctop
 
                 listViewAnimals.Items.Add(item);
             }
-            */
             timerUpdate.Start();
 
         }
