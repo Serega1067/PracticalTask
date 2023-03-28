@@ -28,83 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            /*
-            this.listViewAnimal = new System.Windows.Forms.ListView();
-            this.columnHeaderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderClass = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderCommands = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderBirthday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonLoadAnimal = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // listViewAnimal
-            // 
-            this.listViewAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewAnimal.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderId,
-            this.columnHeaderName,
-            this.columnHeaderClass,
-            this.columnHeaderCommands,
-            this.columnHeaderBirthday});
-            this.listViewAnimal.HideSelection = false;
-            this.listViewAnimal.Location = new System.Drawing.Point(12, 12);
-            this.listViewAnimal.Name = "listViewAnimal";
-            this.listViewAnimal.Size = new System.Drawing.Size(776, 355);
-            this.listViewAnimal.TabIndex = 0;
-            this.listViewAnimal.UseCompatibleStateImageBehavior = false;
-            this.listViewAnimal.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderId
-            // 
-            this.columnHeaderId.Text = "#";
-            // 
-            // columnHeaderName
-            // 
-            this.columnHeaderName.Text = "Name";
-            this.columnHeaderName.Width = 200;
-            // 
-            // columnHeaderClass
-            // 
-            this.columnHeaderClass.Text = "Class";
-            this.columnHeaderClass.Width = 150;
-            // 
-            // columnHeaderCommands
-            // 
-            this.columnHeaderCommands.Text = "Commands";
-            this.columnHeaderCommands.Width = 250;
-            // 
-            // columnHeaderBirthday
-            // 
-            this.columnHeaderBirthday.Text = "Birthday";
-            this.columnHeaderBirthday.Width = 150;
-            // 
-            // buttonLoadAnimal
-            // 
-            this.buttonLoadAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLoadAnimal.Location = new System.Drawing.Point(713, 373);
-            this.buttonLoadAnimal.Name = "buttonLoadAnimal";
-            this.buttonLoadAnimal.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoadAnimal.TabIndex = 1;
-            this.buttonLoadAnimal.Text = "button1";
-            this.buttonLoadAnimal.UseVisualStyleBackColor = true;
-            this.buttonLoadAnimal.Click += new System.EventHandler(this.buttonLoadAnimal_Click);
-            // 
-            // MainForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonLoadAnimal);
-            this.Controls.Add(this.listViewAnimal);
-            this.Name = "MainForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Animal nursery";
-            this.ResumeLayout(false);
-            */
 
             this.components = new System.ComponentModel.Container();
             this.listViewAnimals = new System.Windows.Forms.ListView();
@@ -263,16 +186,6 @@
         }
 
         #endregion
-
-        /*
-        private System.Windows.Forms.ListView listViewAnimal;
-        private System.Windows.Forms.ColumnHeader columnHeaderId;
-        private System.Windows.Forms.ColumnHeader columnHeaderName;
-        private System.Windows.Forms.ColumnHeader columnHeaderClass;
-        private System.Windows.Forms.ColumnHeader columnHeaderCommands;
-        private System.Windows.Forms.ColumnHeader columnHeaderBirthday;
-        private System.Windows.Forms.Button buttonLoadAnimal;
-        */
 
         private System.Windows.Forms.ListView listViewAnimals;
         private System.Windows.Forms.Button buttonLoadAnimals;
